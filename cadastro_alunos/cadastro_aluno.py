@@ -44,13 +44,24 @@ class SistemaCadastro():
                 return
         print("Aluno não encontrado!")
 
+    def remover_aluno(self):
+        matricula = input("Digite a matricula do Aluno que deseja remover: ")
+
+        for aluno in self.alunos:
+            if aluno.matricula == matricula:
+                self.alunos.remove(aluno)
+                print(f"Aluno {aluno.nome} removido com sucesso!")
+                return
+        print("Aluno não encontrado!")
+
     def menu(self):
         while True:
             print("=== Menu Sistema de Cadastro ===")
             print("1. Cadastrar Aluno")
             print("2. Exibir Alunos")
             print("3. Buscar Alunos")
-            print("4. Sair")
+            print("4. Remover Aluno")
+            print("5. Sair ")
 
             opcao = input("Selecione uma opção: ")
 
@@ -61,6 +72,8 @@ class SistemaCadastro():
             elif opcao == "3":
                 self.buscar_aluno()
             elif opcao == "4":
+                self.remover_aluno()
+            elif opcao == "5":
                 print("Saindo do Sistema...")
                 break
             else:
